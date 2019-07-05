@@ -16,6 +16,9 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+"""
+This module contains a Google BigQuery to BigQuery operator.
+"""
 
 from airflow.contrib.hooks.bigquery_hook import BigQueryHook
 from airflow.models import BaseOperator
@@ -69,7 +72,7 @@ class BigQueryToBigQueryOperator(BaseOperator):
                  labels=None,
                  *args,
                  **kwargs):
-        super(BigQueryToBigQueryOperator, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.source_project_dataset_tables = source_project_dataset_tables
         self.destination_project_dataset_table = destination_project_dataset_table
         self.write_disposition = write_disposition

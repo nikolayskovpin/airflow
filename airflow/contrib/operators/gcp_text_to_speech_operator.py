@@ -16,6 +16,9 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+"""
+This module contains a Google Text to Speech operator.
+"""
 
 from tempfile import NamedTemporaryFile
 
@@ -61,7 +64,6 @@ class GcpTextToSpeechSynthesizeOperator(BaseOperator):
         Note that if retry is specified, the timeout applies to each individual attempt.
     :type timeout: float
     """
-
     # [START gcp_text_to_speech_synthesize_template_fields]
     template_fields = (
         "input_data",
@@ -99,7 +101,7 @@ class GcpTextToSpeechSynthesizeOperator(BaseOperator):
         self.retry = retry
         self.timeout = timeout
         self._validate_inputs()
-        super(GcpTextToSpeechSynthesizeOperator, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _validate_inputs(self):
         for parameter in [

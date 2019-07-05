@@ -16,6 +16,9 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+"""
+This module contains Google BigQuery table delete operator.
+"""
 
 from airflow.contrib.hooks.bigquery_hook import BigQueryHook
 from airflow.models import BaseOperator
@@ -51,7 +54,7 @@ class BigQueryTableDeleteOperator(BaseOperator):
                  ignore_if_missing=False,
                  *args,
                  **kwargs):
-        super(BigQueryTableDeleteOperator, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.deletion_dataset_table = deletion_dataset_table
         self.bigquery_conn_id = bigquery_conn_id
         self.delegate_to = delegate_to

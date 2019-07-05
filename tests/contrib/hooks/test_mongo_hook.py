@@ -23,7 +23,6 @@ try:
 except ImportError:
     mongomock = None
 
-from airflow import configuration
 from airflow.contrib.hooks.mongo_hook import MongoHook
 from airflow.models import Connection
 from airflow.utils import db
@@ -35,7 +34,7 @@ class MongoHookTest(MongoHook):
     to get_collection()
     """
     def __init__(self, conn_id='mongo_default', *args, **kwargs):
-        super(MongoHookTest, self).__init__(conn_id=conn_id, *args, **kwargs)
+        super().__init__(conn_id=conn_id, *args, **kwargs)
 
     def get_collection(self, mock_collection, mongo_db=None):
         return mock_collection
@@ -43,7 +42,6 @@ class MongoHookTest(MongoHook):
 
 class TestMongoHook(unittest.TestCase):
     def setUp(self):
-        configuration.load_test_config()
         self.hook = MongoHookTest(conn_id='mongo_default', mongo_db='default')
         self.conn = self.hook.get_conn()
         db.merge_conn(
